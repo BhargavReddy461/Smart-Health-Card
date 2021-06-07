@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+      integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Smart Health Card</title>
+    <link rel="icon" href="img/favicon.png" type="image/png" sizes="18 x 18">
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark " style="background-color: #ffffff;">
+      <div class="container">
+        <img src="img/bluelogo.png" height="30" width="30">&nbsp;
+        <a href="index1.html" class="navbar-brand" style="color: rgb(21, 89, 192);"><b>Smart Health Card</b></a>
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav ml-auto" >
+            <li class="nav-item ">
+              <a href="index1.html" style="color: rgb(21, 89, 192);"  class="nav-link">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+              <a href="profile.html" style="color: rgb(21, 89, 192);"  class="nav-link">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a href="upload.html" style="color: rgb(21, 89, 192);" class="nav-link">Upload</a>
+            </li>
+            <li class="nav-item">
+              <a href="healthrecords.html" style="color: rgb(21, 89, 192);" class="nav-link">Health Records</a>
+            </li>
+  
+  
+          </ul>
+          <ul class="navbar-nav ml-auto">
+  
+            <li class="nav-item">
+              <a href="#" class="nav-link btn btn-block" data-toggle="modal" data-target="#myModal">
+  
+                <button class="btn btn-md btn-outline-primary "> <i
+                    class="fas fa-user-times"></i>&nbsp;&nbsp;Logout</button>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HEADER -->
+    <header id="main-header" class="py-2 text-white" style="text-align: center; background-color: #1560bd;height: 50px;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+          
+            <h1 style="font-family: sans-serif;font-size: 1.25em; "> <img src="img/editprofile.png" height="20px" width="20px"> Edit Profile</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ACTIONS -->
+    <section id="actions" class="py-4 mb-4 bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <a href="index1.html" class="btn btn-outline-dark btn-block">
+              <i class="fas fa-arrow-left"></i> Back To Dashboard
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="newpassword.html" class="btn btn-outline-primary btn-block">
+              <i class="fas fa-lock"></i> Change Password
+            </a>
+          </div>
+          <div class="col-md-3">
+            <a href="changeemail.html" class="btn btn-outline-primary btn-block">
+              <i class="fas fa-envelope"></i> Change Email
+            </a>
+          </div>
+
+          <div class="col-md-3">
+            <a href="deleteuser.html" class="btn btn-outline-primary btn-block">
+              <i class="fas fa-trash"></i> Delete Account
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROFILE -->
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3">
+            <h3 id="nameofuser"></h3>
+
+            <div>
+              <img
+                style="height: 5cm; width: 5cm;border-radius: 100%;"
+                alt="Image"
+                class="d-block img-fluid mb-3"
+                id="profileimage"
+                src="img/avatar.jpg"
+              />
+            </div>
+            <button
+              class="btn btn-outline-primary btn-sm"
+              data-toggle="modal"
+              data-target="#editImage"
+            >
+              &nbsp;&nbsp;Edit Image&nbsp;&nbsp;
+            </button>
+            <button
+              class="btn btn-outline-danger ml-3  btn-sm"
+              data-toggle="modal"
+              data-target="#deleteImage"
+            >
+              Delete Image
+            </button>
+          </div>
+          <div class="col-md-5">
+            <div class="card">
+              <div class="card-header" style="font-family: sans-serif;font-weight: bolder;">
+                <h4>Profile Data</h4>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                    <span style="font-size: 1.3em; font-weight:500 ;font-family: sans-serif;color: #1560bd;"
+                      >Name:</span
+                    >
+                    <span id="card_name" style="font-size:1.25rem; padding-left: 10px;"></span>
+                  </div>
+                  <!-- <div class="form-group">
+                    <span style="font-size: 1.3em; font-weight: 500;font-family: sans-serif; color: #1560bd;"
+                      >Date of Birth:</span
+                    >
+                    <span id="card_dob" style="font-size:1.25rem; padding-left: 10px;"></span>
+                  </div> -->
+                  <div class="form-group">
+                    <span style="font-size: 1.3em; font-weight:500 ;font-family: sans-serif; color: #1560bd;"
+                      >Gender:</span
+                    >
+                    <span id="card_sex" style="font-size:1.25rem; padding-left: 10px;"></span>
+                  </div>
+                  <div class="form-group">
+                    <span style="font-size: 1.3em; font-weight:500 ;font-family: sans-serif;color: #1560bd;"
+                      >Blood Group:</span
+                    >
+                    <span id="card_bg" style="font-size:1.25rem; padding-left: 10px;"></span>
+                  </div>
+                  <div class="form-group">
+                    <h5 style="font-size: 1.3em; font-weight: 500;font-family: sans-serif; color: #1560bd;"">
+                      Health Condition:
+                    </h5>
+                    <span id="card_health" style="font-size:1.25rem;font-weight: lighter;"></span>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+
+           <!--EDIT PROFILE -->
+
+          <div class="col-md-3">
+            <div class="card">
+              <div class="card-header">
+                <h4>Edit Profile</h4>
+              </div>
+              <div class="card-body">
+                <form>
+                  <div class="form-group">
+                    <label style="color: #1560bd;">Health Condition:</label>
+                    <textarea
+                      type="text"
+                      class="form-control"
+                      id="healthcondition"
+                      style="height: 126px"
+                    ></textarea>
+                    <button
+                      type="button"
+                      class="btn btn-primary mt-5"
+                      onclick="Updatehealthcondition();"
+                    >
+                      Update
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+         
+        </div>
+      </div>
+    </section>
+
+   
+
+    <!-- FOOTER -->
+ <!-- FOOTER -->
+ <section id="footer">
+  <div class="copyright mt-5">
+
+    <div class="container">
+      <a href="#"><i class="fab fa-twitter icon-footer icon-mid" aria-hidden="true"></i></a>
+      <a href="#"><i class="fab fa-facebook-f icon_footer icon-mid" aria-hidden="true"></i></a>
+      <a href="#"><i class="fab fa-instagram icon_footer icon-mid" aria-hidden="true"></i></a>
+      <a href="#"><i class="fas fa-envelope-square icon_footer icon-mid" aria-hidden="true"></i></a>
+      <a href="#"><i class="fab fa-linkedin-in icon_footer icon-mid" aria-hidden="true"></i></a>
+      <p>© Copyright 2021 All Right Reserved By <a href="aboutus.html">Smart Health Card</a></p>
+    </div>
+  </div>
+</section>
+
+    <!-- MODALS -->
+
+    <!-- ADD LOGOUT MODAL -->
+    <div class="modal fade" id="myModal">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary text-white">
+            <h5 class="modal-title">LOGOUT</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Do you want to logout?</div>
+          <div class="modal-footer">
+            <button
+              onclick="mainApp.logout();"
+              class="btn btn-danger"
+              data-dismiss="modal"
+            >
+              Logout
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD EDIT PROFILE IMAGE MODAL -->
+    <div class="modal fade" id="editImage">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary text-white">
+            <h5 class="modal-title">EDIT IMAGE</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="form-group">
+              <div class="custom-file mt-5 mb-5">
+                <input
+                  type="file"
+                  accept="file/*"
+                  class="custom-file-input"
+                  id="file"
+                />
+                <label for="file" class="custom-file-label">Select Image</label>
+              </div>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button
+              onclick="updateprofile();"
+              class="btn btn-success"
+              data-dismiss="modal"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD DELETE PROFILE IMAGE MODAL -->
+    <div class="modal fade" id="deleteImage">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary text-white">
+            <h5 class="modal-title">DELETE PROFILE IMAGE</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">Are you sure to delete your profile</div>
+          <div class="modal-footer">
+            <button
+              onclick="deleteprofilephoto();"
+              class="btn btn-danger"
+              data-dismiss="modal"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ADD EDIT PROFILE EMAIL MODAL -->
+    <div class="modal fade" id="editEmail">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header bg-secondary text-white">
+            <h5 class="modal-title">EDIT IMAGE</h5>
+            <button class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+          </div>
+          <form>
+            <div class="form-group">
+              <div class="custom-file mt-5 mb-5">
+                <input type="text" id="file" />
+              </div>
+            </div>
+          </form>
+          <div class="modal-footer">
+            <button
+              onclick="updateprofile();"
+              class="btn btn-success"
+              data-dismiss="modal"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/firebase.js"></script>
+    <script src="js/main.js"></script>
+
+    <script
+      src="http://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+    <script>
+      // Get the current year for the copyright
+      $("#year").text(new Date().getFullYear());
+    </script>
+  </body>
+</html>

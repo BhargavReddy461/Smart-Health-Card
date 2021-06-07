@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "..\\..\\Health"
+		}
+	],
+	"settings": {
+		"liveServer.settings.port": 5502,
+		"liveServer.settings.multiRootWorkspaceName": "Smart Health Card-21-04-2021"
+	}
+}

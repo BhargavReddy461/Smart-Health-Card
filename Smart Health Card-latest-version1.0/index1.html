@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/4.8.2/firebase-auth.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/2.5.1/firebaseui.css" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+    integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Smart Health Card</title>
+  <link rel="icon" href="img/favicon.png" type="image/png" sizes="18 x 18">
+</head>
+
+<body style="background-color: #fafafa;">
+  <nav class="navbar navbar-expand-sm navbar-dark " style="background-color: #ffffff;">
+    <div class="container">
+      <img src="img/bluelogo.png" height="30" width="30">&nbsp;
+      <a href="index1.html" class="navbar-brand" style="color: rgb(21, 89, 192);"><b style="font-family: sans-serif;">Smart Health Card</b></a>
+      <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav ml-auto" >
+          <li class="nav-item active">
+            <a href="index1.html"style="color: rgb(21, 89, 192);"  class="nav-link">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a href="profile.html"style="color: rgb(21, 89, 192);"  class="nav-link">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a href="upload.html" style="color: rgb(21, 89, 192);" class="nav-link">Upload</a>
+          </li>
+          <li class="nav-item">
+            <a href="healthrecords.html" style="color: rgb(21, 89, 192);" class="nav-link">Health Records</a>
+          </li>
+
+
+        </ul>
+        <ul class="navbar-nav ml-auto">
+
+          <li class="nav-item">
+            <a href="#" class="nav-link btn btn-block" data-toggle="modal" data-target="#myModal">
+
+              <button class="btn btn-md btn-outline-primary "> <i
+                  class="fas fa-user-times"></i>&nbsp;&nbsp;Logout</button>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+ 
+
+
+  <!-- HEADER -->
+
+
+  <!-- BODY -->
+  <div class="container">
+    <div class="row mt-5 mb-5">
+      <div class="col-lg-4" style="height: 500px;">
+        <div>
+          <h1 style="color: #8b8888;">Welcome back,<br><h1 id =username style="color: #000000;padding-left: 6px;padding-top: 10px;" ></h1>
+           </h1>
+          <img src="img/login123.svg" style="padding-top: 120px; padding-right: 20px;" width="110%">
+
+        </div>
+
+      </div>
+
+      <div class="col-lg-8 ml-2 row ">
+        <div class="col-lg-5  mb-5 cardcol" style="padding-right: 0;padding-left:50px;margin-right: 0;">
+          <div class="card cardstyling" style="background-image: linear-gradient(to right,#3930b9,#6264ec) ;border: none; ">
+          <a href="profile.html" style="text-decoration: none;">
+            <div class="card-body cardheight " style="height: 250px; ">
+              <i class="fas fa-user-circle fa-3x dashboardicons "></i>
+              <h4 class="card-title" style="color: rgb(255, 255, 255);text-decoration: none;">Your Profile</h4>
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5 mb-5" style="padding-right: 0;padding-left:50px;margin-right: 0;">
+          
+          <div class="card  cardstyling" style="background-image: linear-gradient(to right,#3930b9,#6264ec) ;border: none; ">
+
+            <a href="qrcode.html" style="text-decoration: none;">
+            <div class="card-body cardheight">
+              
+              <i class="fas fa-address-card fa-3x dashboardicons "></i>
+              <h4 class="card-title" style="color: rgb(255, 255, 255);text-decoration: none;">Generate Health Card</h4>
+            </div>
+          </a>
+          </div>
+       
+        </div>
+        <div class="col-lg-5 " style="padding-right: 0;padding-left:50px;margin-right: 0;">
+          <div class="card  cardstyling" style="background-image: linear-gradient(to right,#3930b9,#6264ec) ;border: none; ">
+            <a href="upload.html" style="text-decoration: none;">
+            <div class="card-body cardheight">
+              <i class="fas fa-cloud-upload-alt fa-3x  dashboardicons"></i>
+              <h4 class="card-title" style="color: rgb(255, 255, 255);text-decoration: none;">Upload Your files</h4>
+            </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-5" style="padding-right: 0;padding-left:50px;margin-right: 0;">
+          <div class="card  cardstyling" style="background-image: linear-gradient(to right,#3930b9,#6264ec) ;border: none; ">
+
+            <a href="healthrecords.html" style="text-decoration: none;">
+            <div class="card-body cardheight">
+              <i class="fas fa-file-medical fa-3x  dashboardicons "></i>
+              <h4 class="card-title" style="color: rgb(255, 255, 255);text-decoration: none;">Your health Records</h4>
+            </div>
+          </a>
+          </div>
+        </div>
+        <!-- <div class="col-lg-8 row ">
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top " src="img/blankprofile.png" alt="" />
+            <div class="card-body">
+              <h4 class="card-title"><a href="profile.html">Profile</a></h4>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card">
+            <img class="card-img-top img-fluid" src="img/blankprofile.png" alt="" />
+
+            <div class="card-body">
+              <h4 class="card-title"><a href="qrcode.html">Generate Health Card</a></h4>
+            </div>
+          </div>
+        </div> -->
+
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <!-- FOOTER -->
+  <section id="footer">
+    <div class="copyright">
+
+      <div class="container">
+        <a href="#"><i class="fab fa-twitter icon-footer icon-mid" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-facebook-f icon_footer icon-mid" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-instagram icon_footer icon-mid" aria-hidden="true"></i></a>
+        <a href="#"><i class="fas fa-envelope-square icon_footer icon-mid" aria-hidden="true"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in icon_footer icon-mid" aria-hidden="true"></i></a>
+        <p>© Copyright 2021 All Right Reserved By <a href="aboutus.html">Smart Health Card</a></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- MODALS -->
+
+  <!-- ADD POST MODAL -->
+  <div class="modal fade" id="addPostModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-primary text-white">
+          <h5 class="modal-title">Add Post</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select class="form-control">
+                <option value="">Web Development</option>
+                <option value="">Tech Gadgets</option>
+                <option value="">Business</option>
+                <option value="">Health & Wellness</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="image">Upload Image</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="image" />
+                <label for="image" class="custom-file-label">Choose File</label>
+              </div>
+              <small class="form-text text-muted">Max Size 3mb</small>
+            </div>
+            <div class="form-group">
+              <label for="body">Body</label>
+              <textarea name="editor1" class="form-control"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" data-dismiss="modal">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD CATEGORY MODAL -->
+  <div class="modal fade" id="addCategoryModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-success text-white">
+          <h5 class="modal-title">Add Category</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input type="text" class="form-control" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-success" data-dismiss="modal">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD USER MODAL -->
+  <div class="modal fade" id="addUserModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-warning text-white">
+          <h5 class="modal-title">Add User</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="password2">Confirm Password</label>
+              <input type="password" class="form-control" />
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-warning" data-dismiss="modal">
+            Save Changes
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD LOGOUT MODAL -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header bg-secondary text-white">
+          <h5 class="modal-title">LOGOUT</h5>
+          <button class="close" data-dismiss="modal">
+            <span>&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Do you want to logout?</div>
+        <div class="modal-footer">
+          <button onclick="mainApp.logout();" class="btn btn-danger" data-dismiss="modal">
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/firebase.js"></script>
+  <script src="js/main.js"></script>
+
+  <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+    integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.ckeditor.com/4.9.2/standard/ckeditor.js"></script>
+
+  <script>
+    // Get the current year for the copyright
+    $("#year").text(new Date().getFullYear());
+  </script>
+</body>
+
+</html>
